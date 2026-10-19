@@ -1,0 +1,28 @@
+:root{--bg1:#fff1f3;--bg2:#ffe0e8;--ink:#5a2a3a;--accent:#e0577a;--card:rgba(255,255,255,.78)}
+body.hanh{--bg1:#fff3ee;--bg2:#ffd9d6;--ink:#6b2b2b;--accent:#d93b4a}
+body.ngoc{--bg1:#fffaf0;--bg2:#fde4ee;--ink:#5b3a4a;--accent:#d96a98}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;min-height:100vh;overflow-x:hidden}
+.petal{position:fixed;top:-30px;pointer-events:none;z-index:1;opacity:.8;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+header{text-align:center;padding:56px 20px 20px;position:relative;z-index:2}
+.date{letter-spacing:.35em;font-size:.8rem;color:var(--accent);font-weight:600}
+h1{font-family:'Dancing Script',cursive;font-size:clamp(2.6rem,10vw,4.6rem);color:var(--accent);margin:8px 0;line-height:1.1}
+.sub{opacity:.8;font-size:.95rem}
+.hero{display:block;width:min(88%,380px);aspect-ratio:3/4;object-fit:cover;margin:26px auto;border-radius:200px 200px 24px 24px;border:6px solid #fff;box-shadow:0 14px 40px rgba(180,60,90,.28);cursor:zoom-in;position:relative;z-index:2}
+.card{position:relative;z-index:2;max-width:640px;margin:10px auto 30px;padding:30px 26px;background:var(--card);backdrop-filter:blur(6px);border-radius:22px;box-shadow:0 10px 30px rgba(180,60,90,.15);line-height:1.85;font-size:1.05rem}
+.card .greet{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--accent);margin-bottom:8px}
+.card .sign{text-align:right;font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--accent);margin-top:14px}
+.gallery{position:relative;z-index:2;max-width:900px;margin:0 auto 30px;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.gallery img{width:100%;height:340px;object-fit:cover;border-radius:18px;border:5px solid #fff;box-shadow:0 8px 22px rgba(180,60,90,.2);cursor:zoom-in;transition:transform .3s}
+.gallery img:hover{transform:rotate(-1.5deg) scale(1.02)}
+.gallery img.top{object-position:center 65%}
+nav{position:relative;z-index:2;text-align:center;padding:10px 16px 90px}
+nav a{display:inline-block;margin:5px;padding:10px 20px;border-radius:30px;background:#fff;color:var(--accent);text-decoration:none;font-weight:600;box-shadow:0 4px 12px rgba(180,60,90,.18)}
+nav a.on{background:var(--accent);color:#fff}
+#music{position:fixed;right:16px;bottom:16px;z-index:20;border:0;border-radius:30px;padding:12px 18px;background:var(--accent);color:#fff;font:600 .95rem 'Be Vietnam Pro',sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}
+#lb img{max-width:94vw;max-height:92vh;border-radius:10px}
+.fade{animation:up 1s ease both}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
