@@ -1,11 +1,25 @@
 (function(){
+  function swap(el){var s=el.getAttribute('src')||'';if(s.indexOf('assets/')===0){el.setAttribute('src',s.replace('assets/','assest/'))}}
+  document.querySelectorAll('img,audio').forEach(function(el){
+    el.addEventListener('error',function(){swap(el)});
+    if(el.tagName==='IMG'&&el.complete&&el.naturalWidth===0)swap(el);
+  });
+})();
+(function(){
   var a=document.getElementById('audio'),b=document.getElementById('music');
   function label(){b.textContent=a.paused?'🎵 Bật nhạc':'⏸ Tắt nhạc'}
   try{var t=parseFloat(localStorage.getItem('mt')||0);if(t)a.currentTime=t}catch(e){}
   b.onclick=function(){if(a.paused){a.play().catch(function(){});localStorage.setItem('mp','1')}else{a.pause();localStorage.setItem('mp','0')}label()};
   a.addEventListener('play',label);a.addEventListener('pause',label);
   setInterval(function(){try{localStorage.setItem('mt',a.currentTime)}catch(e){}},1000);
-  if(localStorage.getItem('mp')==='1')a.play().catch(function(){});
+  function showOv(){
+    if(document.getElementById('ov'))return;
+    var ov=document.createElement('div');ov.id='ov';
+    ov.innerHTML='<div class="e">💌</div><div class="t">Có thiệp gửi đến bạn</div><div class="s">Chạm vào màn hình để mở</div>';
+    document.body.appendChild(ov);
+    ov.onclick=function(){a.play().catch(function(){});try{localStorage.setItem('mp','1')}catch(e){}ov.remove()};
+  }
+  a.play().then(function(){try{localStorage.setItem('mp','1')}catch(e){}}).catch(showOv);
   label();
   var em=document.body.dataset.petals.split(',');
   setInterval(function(){
